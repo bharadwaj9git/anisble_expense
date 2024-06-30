@@ -1,5 +1,5 @@
 - name: sample file
-  hosts: local host
+  hosts: all
   tasks:
   - ansible.builtin.debug:
        msg: hello world robot
