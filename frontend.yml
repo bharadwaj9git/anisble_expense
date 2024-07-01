@@ -1,5 +1,7 @@
 - name: frontend plabook
   hosts: all
+  become: true
+  #become_method: sudo #optional
   tasks:
     - name: Install nginx
       ansible.builtin.dnf:
