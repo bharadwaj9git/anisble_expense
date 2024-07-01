@@ -20,7 +20,7 @@
 
     - name: Create html directory
       ansible.builtin.file:
-        path: /usr/share/nginx/html/*
+        path: /usr/share/nginx/html
         state: directory
 
     #- name: Download content
@@ -31,7 +31,7 @@
     - name: download content & extract
       ansible.builtin.unarchive:
         src: https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.zip
-        dest: /usr/share/nginx/html/*
+        dest: /usr/share/nginx/html
         remote_src: yes
 
     - name: start nginx service and enabling service
