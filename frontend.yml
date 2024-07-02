@@ -1,5 +1,5 @@
 - name: frontend plabook
-  hosts: local host
+  hosts: localhost
   become: true
   #become_method: sudo #optional
   tasks:
