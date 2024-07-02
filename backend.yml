@@ -49,7 +49,7 @@
      ansible.builtin.dnf :
        name :
            - mysql
-           - python3-PyMySQL
+           - python3.11-PyMySQL
        state : present
 
    - name: import mysql schema
