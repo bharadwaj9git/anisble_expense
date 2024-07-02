@@ -7,13 +7,13 @@
 
   - name : installing mysql
     ansible.builtin.dnf :
-        name : mysql
+        name : mysql-server
         state : present
 
   - name: start mysql  and enabling service
     ansible.builtin.systemd_service:
+      name: mysqld
       state: restarted
-      name: mysql
       enabled: true
 
   - name: set root password
