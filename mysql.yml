@@ -1,5 +1,6 @@
 - name: mysql playbook
   hosts: all
+  become: true
   tasks:
     - name : installing mysql
       ansible.builtin.dnf :
