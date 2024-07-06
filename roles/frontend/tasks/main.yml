@@ -7,7 +7,7 @@
     state: present
 
 - name: config file copy
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: frontend.conf
     dest: /etc/nginx/default.d/frontend.conf
 
