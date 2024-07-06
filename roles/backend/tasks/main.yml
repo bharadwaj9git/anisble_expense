@@ -1,5 +1,4 @@
-- name: set prompt
-  ansible.builtin.shell : set-prompt backend
+
 
 - name: disabling old version of nodejs
   ansible.builtin.shell : dnf module disable nodejs -y
