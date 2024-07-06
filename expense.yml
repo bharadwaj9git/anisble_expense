@@ -1,4 +1,4 @@
-- name: mysql playbook
+- name: expense_ansible_main_nodes
   hosts: all
   become: true
   roles:
