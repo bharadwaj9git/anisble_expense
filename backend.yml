@@ -1,72 +1,9 @@
 - name : backend playbook
   hosts: all
   become: true
-  tasks:
-   - name: set prompt
-     ansible.builtin.shell : set-prompt backend
+  roles:
+    - backend
 
-   - name: disabling old version of nodejs
-     ansible.builtin.shell : dnf module disable nodejs -y
-
-   - name: enabling latest version of nodejs
-     ansible.builtin.shell : dnf module enable nodejs:20 -y
-
-   - name: installing nodejs
-     ansible.builtin.dnf :
-        name : nodejs
-        state : present
-
-   - name: adding user
-     ansible.builtin.user :
-       name : expense_user
-
-   - name: config file copy
-     ansible.builtin.copy:
-       src: backend.service
-       dest: /etc/systemd/system/backend.service
-
-   - name: removing old application directory
-     ansible.builtin.file:
-       path: /app
-       state: absent
-
-   - name: creating application directory
-     ansible.builtin.file:
-       path: /app
-       state: directory
-
-   - name: download content & extract
-     ansible.builtin.unarchive:
-       src: https://expense-artifacts.s3.amazonaws.com/expense-backend-v2.zip
-       dest: /app
-       remote_src: yes
-
-   - name: downloading npm dependencies
-     community.general.npm:
-        path : /app
-
-   - name: install mysql client & mysql python
-     ansible.builtin.dnf :
-       name :
-           - mysql
-           - python3.11-PyMySQL
-       state : present
-
-   - name: import mysql schema
-     community.mysql.mysql_db:
-       state: import
-       name: all
-       target: /app/schema/backend.sql
-       login_user: root
-       login_password: ExpenseApp@1
-       login_host: mysql-dev.saidevops79.online
-
-   - name: start backend service
-     ansible.builtin.systemd_service:
-       name: backend
-       state: restarted
-       enabled : true
-       daemon_reload: true
 
 
 
