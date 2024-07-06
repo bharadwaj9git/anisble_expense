@@ -2,46 +2,8 @@
   hosts: all
   become: true
   #become_method: sudo #optional
-  tasks:
-    - name: set prompt
-      ansible.builtin.shell: set-prompt frontend
-
-    - name: Install nginx
-      ansible.builtin.dnf:
-        name: nginx
-        state: present
-
-    - name: config file copy
-      ansible.builtin.copy:
-        src: frontend.conf
-        dest: /etc/nginx/default.d/frontend.conf
-
-    - name: removing html content
-      ansible.builtin.file:
-        path: /usr/share/nginx/html/*
-        state: absent
-
-    - name: Create html directory
-      ansible.builtin.file:
-        path: /usr/share/nginx/html
-        state: directory
-
-    #- name: Download content
-    #  ansible.builtin.get_url:
-    #    url:  https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.
-    #    dest: /tmp/frontend.
-
-    - name: download content & extract
-      ansible.builtin.unarchive:
-        src: https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.zip
-        dest: /usr/share/nginx/html
-        remote_src: yes
-
-    - name: start nginx service and enabling service
-      ansible.builtin.systemd_service:
-        state: restarted
-        name: nginx
-        enabled: true
+  roles:
+    - frontend
 
 
 
