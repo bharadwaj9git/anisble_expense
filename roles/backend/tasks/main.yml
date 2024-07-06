@@ -17,7 +17,7 @@
     name : expense_user
 
 - name: config file copy
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: backend.service
     dest: /etc/systemd/system/backend.service
 
