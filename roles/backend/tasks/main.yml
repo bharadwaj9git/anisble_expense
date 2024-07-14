@@ -46,7 +46,7 @@
 #    login_host: mysql-dev.saidevops79.online
 
 - name: load schema
-  ansible builtin.shell: mysql -h mysql-dev.saidevops79.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
+  ansible.builtin.shell : mysql -h mysql-dev.saidevops79.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
 
 - name: start backend service
   ansible.builtin.systemd_service:
