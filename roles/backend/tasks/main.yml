@@ -36,17 +36,17 @@
       - python3.11-PyMySQL
     state : present
 
-#- name: import mysql schema
-#  community.mysql.mysql_db:
-#    state: import
-#    name: all
-#    target: /app/schema/backend.sql
-#    login_user: root
-#    login_password: ExpenseApp@1
-#    login_host: mysql-dev.saidevops79.online
+- name: import mysql schema
+  community.mysql.mysql_db:
+    state: import
+    name: all
+    target: /app/schema/backend.sql
+    login_user: root
+    login_password: ExpenseApp@1
+    login_host: mysql-dev.saidevops79.online
 
-- name: load schema
-  ansible.builtin.shell : mysql -h mysql-dev.saidevops79.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
+#- name: load schema
+#  ansible.builtin.shell : mysql -h mysql-dev.saidevops79.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
 
 - name: start backend service
   ansible.builtin.systemd_service:
