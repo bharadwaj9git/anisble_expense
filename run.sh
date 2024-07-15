@@ -1,5 +1,5 @@
 # template
-if ["$component" == "true"]; then
+if ["$pipeline" == "true"]; then
   exit
 fi
 ##
