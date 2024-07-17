@@ -1,7 +1,8 @@
-# skip anisble run
-if ["$pipeline" == "true"]; then
+## skip  run
+if [ "$pipeline" == "true" ]; then
   exit
-  fi
+fi
+
 
 
 ##
