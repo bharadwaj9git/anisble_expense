@@ -1,0 +1,6 @@
+- name: Read secret
+  hosts: localhost
+  tasks:
+    -name: read a kv2 secret
+  ansible.builtin.debug:
+    msg: "{{ lookup('community.hashi_vault.vault_read', 'secret=expense-dev/data/mysql' token={{token}}, url='https://vault-3.80.182.210:8200') }}"
