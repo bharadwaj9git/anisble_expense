@@ -1,2 +1,7 @@
 - name: set prompt
   ansible.builtin.shell : set-prompt {{ component }}-{{ env }}
+
+- name : setup node exporter
+  ansible.builtin.import_role:
+    name : prometheus
+    tasks_from : node-exporter

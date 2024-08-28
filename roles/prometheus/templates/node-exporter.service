@@ -1,0 +1,11 @@
+[Unit]
+Description = node-exporter
+
+[Service]
+User=Prometheus
+WorkingDirectory=/opt/node_exporter-1.8.2.linux-amd64
+ExecStart=/opt/node_exporter-1.8.2.linux-amd64/node-exporter
+SyslogIdentifier=Prometheus
+
+[Install]
+WantedBy=multi-user.target
